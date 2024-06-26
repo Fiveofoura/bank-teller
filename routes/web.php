@@ -7,13 +7,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-    Route::get('/search', function () {
-        return view('accsearch');
-    });
-        Route::post('/search', function(){
-            return App::call('App\Http\Controllers\BankTeller@sacc');
-        });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
