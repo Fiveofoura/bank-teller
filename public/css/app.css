@@ -1,0 +1,180 @@
+@media screen and (max-width: 800px) {
+  :root
+  {
+    --bcards:1fr;
+  }
+}
+@media screen and (min-width: 801px) and (max-width: 1220px) {
+  :root
+  {
+    --bcards:1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1221px) {
+  :root
+  {
+    --bcards:1fr 1fr 1fr;
+  }
+}
+
+
+body {
+	font-family: arial, sans-serif;
+	line-height:1.5em;
+	margin:0px;
+	padding:0px;
+}
+
+p
+{
+	margin:0px;
+	padding:0px;
+}
+
+input
+{
+	border: 0.5px solid blue;
+	border-radius:10px;
+	height:2em;
+	line-height:2em;
+	box-shadow: 0px 1px 2px rgb(0.5 0.5 0.5 / 0.3);
+	margin:5px 0px;
+}
+select
+{
+	line-height:2em;
+	height:2em;
+	background-color:white;
+	border:0.5px solid blue;
+	border-radius:10px;
+	box-shadow: 0px 1px 2px rgb(0.5 0.5 0.5 / 0.3);
+	margin:5px 0px;
+}
+
+td
+{
+	padding:4px;
+}
+
+h1
+{
+	font-size:14pt;
+}
+
+.bord
+{
+	border: 0px solid lightgray;
+}
+
+.right
+{
+	text-align:right;
+}
+
+.center
+{
+	text-align:center;
+}
+
+.left
+{
+	text-align:left;
+}
+
+.bold
+{
+	font-weight:bold;
+}
+
+.radius
+{
+	border-radius:10px;
+}
+
+.pad
+{
+	padding:10px;
+}
+
+.wide-marg
+{
+	margin-left:25%;
+	margin-right:25%;
+	text-align:center;
+}
+
+.marg
+{
+	margin:10px;
+}
+
+.marg-top
+{
+	margin-top:10px;
+}
+
+.marg-top-large
+{
+	margin-top:20px;
+}
+
+.row 
+{
+	display:grid;
+	grid-template-columns: var(--bcards);
+	width:100%;
+}
+
+.card
+{
+	background-color:#EFEBEA;
+	box-shadow: 0px 1px 2px rgb(0.5 0.5 0.5 / 0.3);
+	padding:2em;
+}
+
+.bg-black
+{
+	background-color:black;
+	color:white;
+}
+
+.bg-blue
+{
+	background-color:#72A0C1;
+}
+
+.bg-white
+{
+	background-color:white;
+}
+
+.bg-lightgray
+{
+	background-color:lightgray;
+}
+
+.bg-lightgray
+{
+	background-color:lightgray;
+}
+
+.bg-lighter
+{
+	background-color:#FAFBFF;
+}
+
+.w-50
+{
+	width:50%;
+}
+
+.w-90
+{
+	width:90%;
+}
+
+.w-100
+{
+	width:100%;
+}
+
