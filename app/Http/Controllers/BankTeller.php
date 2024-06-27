@@ -4,18 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class BankTeller extends Controller
 {
     public function sacc(request $request)
     {
         $req = $request->all();
-        
         $views = array();
+        $trans = array();
+        $transheaders = array(
+            'txn_id' => 'ID',
+            'txn_date' => 'Date',
+            'txn_type_cd' => 'Type',
+            'amount' => 'Amount',   
+        );
         
         $account = trim($req['account']);
         if(preg_match('/^[0-9]+[0-9\-]+[0-9]+$/', $account))
         {  
+            if(isset($req['type']))
+            {
+                if(isset($req['deb']))
+                {
+                    if(session()->get('debounce') === $req['deb'])
+                    {
+                        $tx = new transactions();
+                        $gt = $tx->addTransaction($req);
+                    }
+                }
+            }
             // Create a blueprint for the account display
             $viewclass = new \stdClass();
             $viewclass->address = array(
@@ -42,6 +60,8 @@ class BankTeller extends Controller
             // Order the data into viewable sections
             if(isset($custID) > 0)
             {
+                $db = (string) Str::uuid();
+                session(['debounce' => $db]);
                 foreach ($custID as $k => $v)
                 {
                     $views[$k] = clone $viewclass;
@@ -65,9 +85,17 @@ class BankTeller extends Controller
                             }
                         }
                     }
+                    if(isset($views[$k]->account_id))
+                    { 
+                        $trans[$k] = DB::table('transaction')
+                        ->where('transaction.account_id', '=', $views[$k]->account_id)
+                        ->get();
+                    }
                 }
                 return view('searchResult')->with('vc', $views)
-                ->with('account', $req['account']);
+                                           ->with('th', $transheaders)
+                                           ->with('trans', $trans)
+                                           ->with('account', $req['account']);
             }
         }
     }

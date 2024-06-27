@@ -4,8 +4,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('accsearch');
 });
+
+    Route::post('/', function(){
+        return App::call('App\Http\Controllers\BankTeller@sacc');
+    });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
