@@ -4,6 +4,8 @@ This app has been created using Laravel 11. Download the code and set up your we
 
 ## The Bank Teller App
 
+The app is all on the home page (not the 'dashboard' route).
+
 The home page will allow you to search on the customer ID. All accounts belonging to the customer and associated transactions will be displayed. You can update the address of the customer and add transactions on this page.
 
 The site is mobile friendly.
